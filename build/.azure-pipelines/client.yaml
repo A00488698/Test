@@ -11,10 +11,10 @@ steps:
     versionSpec: '23.1.0'
   displayName: 'Install Node.js'
 
-- script:
-     cd src/dotNetReactjs/ClientApp/
-     npm install
-     npm run build
+- script: |
+    cd src/dotNetReactjs/ClientApp
+    npm install
+    npm run build
   displayName: 'npm install and build'
 
 
