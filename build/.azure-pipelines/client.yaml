@@ -18,13 +18,18 @@ steps:
   displayName: 'npm install and build'
 
 
-
-
+- task: CopyFiles@2
+  inputs:
+    SourceFolder: 'src/dotNetReactjs/ClientApp/build'  # 确保这个是构建输出目录
+    Contents: '**'  # 复制所有内容
+    TargetFolder: '$(Build.ArtifactStagingDirectory)/ClientAppBuild'
+  
 - task: PublishBuildArtifacts@1
   inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)/Test/src/dotNetReactjs/ClientApp/'
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)/ClientAppBuild'
     ArtifactName: 'drop'
     publishLocation: 'Container'
+
 
   
 
