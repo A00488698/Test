@@ -14,7 +14,7 @@ steps:
 - task: Npm@1
   inputs:
     customCommand: 'npm install && npm run build'
-    workingDir: '/Test/src/dotNetReactjs/ClientApp/'
+    workingDir: '$(Build.ArtifactStagingDirectory)/Test/src/dotNetReactjs/ClientApp/'
   displayName: 'npm install and build'
 
 
