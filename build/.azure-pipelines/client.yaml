@@ -14,14 +14,15 @@ steps:
 - task: Npm@1
   inputs:
     customCommand: 'npm install && npm run build'
-    workingDir: '../../src/dotNetReactjs/ClientApp/'
+    workingDir: '$(Build.ArtifactStagingDirectory)/src/dotNetReactjs/ClientApp/'
   displayName: 'npm install and build'
 
 - task: PublishBuildArtifacts@1
   inputs:
-    PathtoPublish: '../../src/dotNetReactjs/ClientApp/'
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)/src/dotNetReactjs/ClientApp/'
     ArtifactName: 'drop'
     publishLocation: 'Container'
+
   
 
 
