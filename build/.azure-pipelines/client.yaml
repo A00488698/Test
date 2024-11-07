@@ -1,0 +1,27 @@
+trigger:
+  - main
+
+pool:
+  vmImage: abuntu-latest
+  
+steps:
+- task: NodeTool@0
+  inputs:
+    versionSource: 'spec'
+    versionSpec: '23.1.0'
+  displayName: 'Install Node.js'
+
+- task: Npm@1
+  inputs:
+    customCommand: 'npm install && npm run build'
+    workingDir: '../../src/dotNetReactjs/ClientApp/'
+  displayName: 'npm install and build'
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '../../src/dotNetReactjs/ClientApp/'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'
+  
+
+
